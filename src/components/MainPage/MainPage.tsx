@@ -5,9 +5,8 @@ import { FORM_VALIDATION_SCHEMA } from "../../constants/FORM_VALIDATION_SCHEMA";
 
 import styles from "./MainPage.module.scss";
 import useLocalStorageState from "use-local-storage-state";
-import { nanoid } from "nanoid";
 import { ITable } from "../../types/table";
-import { setItem } from "../../utils/setItem";
+import { setTableRow } from "../../utils/tableActions";
 import { CustomTable } from "../CustomTable";
 
 export const MainPage = () => {
@@ -17,15 +16,7 @@ export const MainPage = () => {
       defaultValue: [
         {
           tableId: "1",
-          itemsList: [
-            {
-              id: nanoid(),
-              name: "Tast",
-              surname: "Tastsur",
-              age: "22",
-              city: "Ventspils",
-            },
-          ],
+          itemsList: [],
         },
       ],
     }
@@ -33,7 +24,7 @@ export const MainPage = () => {
 
   return (
     <Layout>
-      <>
+      <div className={styles.root}>
         <div className={styles.formWrapper}>
           <Formik
             initialValues={{
@@ -44,7 +35,7 @@ export const MainPage = () => {
             }}
             validationSchema={FORM_VALIDATION_SCHEMA}
             onSubmit={(data, { resetForm }) => {
-              setItem(data, "1", tablesList, setTablesList);
+              setTableRow(data, "1", tablesList, setTablesList);
               resetForm();
             }}
           >
@@ -54,10 +45,20 @@ export const MainPage = () => {
             </>
           </Formik>
         </div>
-        <div>
-          <CustomTable />
+        <div className={styles.tablesListWrapper}>
+          {tablesList &&
+            tablesList.map((item) => {
+              return (
+                <CustomTable
+                  tableID={item.tableId}
+                  rowsList={item.itemsList}
+                  isShowDeletaTableBtn={item.tableId !== "1"}
+                  key={item.tableId}
+                />
+              );
+            })}
         </div>
-      </>
+      </div>
     </Layout>
   );
 };

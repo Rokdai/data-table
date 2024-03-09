@@ -1,6 +1,24 @@
+@import "../../assets/styles/services.scss";
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.tablesListWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
 .formWrapper {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
+
+  @include media-max($md) {
+    justify-content: center;
+  }
 }

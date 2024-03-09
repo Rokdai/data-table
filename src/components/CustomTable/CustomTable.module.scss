@@ -1,0 +1,98 @@
+@import "../../assets/styles/services.scss";
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.topBtnsWrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 22px;
+}
+
+.copyBtn {
+  width: fit-content;
+  height: unset;
+
+  padding: 5px 16px;
+}
+
+.tableWrapper {
+  @include media-max($md) {
+    overflow-x: auto;
+  }
+}
+
+.table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.thead {
+  height: 30px;
+
+  background: $dark-blue;
+
+  color: $white;
+}
+
+.theadItem {
+  padding: 8px 12px;
+
+  font-weight: 400;
+
+  text-align: start;
+
+  &:first-child {
+    border-top-left-radius: 4px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 4px;
+  }
+}
+
+.tbody {
+  background: $white;
+}
+
+.tbodyRow {
+  height: 32px;
+}
+
+.tbodyItem {
+  padding: 8px 12px;
+  border: 1px solid $light-grey;
+
+  &:last-child {
+    @include media-max($md) {
+      position: sticky;
+      right: 0;
+
+      background: $white;
+
+      z-index: 1;
+    }
+  }
+}
+
+.btnWrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20%;
+}
+
+.potalSubstrate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,26 @@
+@import "../../assets/styles/services.scss";
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  max-width: 300px;
+  width: 100%;
+
+  padding: 16px;
+
+  border-radius: 4px;
+
+  background: $white;
+
+  & .form {
+    padding: 0;
+
+    box-shadow: none;
+  }
+
+  & .closeBtn {
+    margin-left: auto;
+  }
+}

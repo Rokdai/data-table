@@ -21,4 +21,41 @@
 
     cursor: default;
   }
+
+  &.nonGreasy {
+    font-weight: 400;
+  }
+
+  &.unstyled {
+    width: unset;
+    height: unset;
+    padding: 0;
+    background: none;
+  }
+
+  &.edit {
+    width: fit-content;
+    height: auto;
+
+    padding: 0;
+
+    background: none;
+
+    text-decoration: underline;
+
+    color: $link;
+  }
+
+  &.delete {
+    width: fit-content;
+    height: auto;
+
+    padding: 0;
+
+    background: none;
+
+    text-decoration: underline;
+
+    color: $red;
+  }
 }

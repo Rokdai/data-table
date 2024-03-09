@@ -1,0 +1,15 @@
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  overflow: auto;
+
+  width: 100%;
+  height: 100%;
+
+  // Перенести в константу
+  background: rgba(37, 30, 33, 0.7);
+
+  z-index: 9999;
+}

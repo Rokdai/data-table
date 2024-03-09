@@ -7,8 +7,15 @@ import { FormColumnWrapper } from "../FormFields/FormColumnWrapper";
 import styles from "./Form.module.scss";
 import { IForm } from "../../types/form";
 import { SingleValue } from "react-select";
+import { FC } from "react";
+import classNames from "classnames";
 
-export const Form = () => {
+interface IProps {
+  className?: string;
+  submitBtnText?: string;
+}
+
+export const Form: FC<IProps> = ({ className, submitBtnText = "ADD" }) => {
   const formik: FormikContextType<IForm> = useFormikContext();
 
   const onSelectValue = (
@@ -21,7 +28,10 @@ export const Form = () => {
   };
 
   return (
-    <form className={styles.root} onSubmit={formik.handleSubmit}>
+    <form
+      className={classNames(styles.root, className)}
+      onSubmit={formik.handleSubmit}
+    >
       <FormColumnWrapper>
         <CustomInput
           name="name"
@@ -59,12 +69,13 @@ export const Form = () => {
       </FormColumnWrapper>
       <CustomButton
         type="submit"
-        buttonContent={"ADD"}
         isDisabled={
           !Object.values(formik.values).some((value) => value.length > 0) ||
           !formik.isValid
         }
-      />
+      >
+        {submitBtnText}
+      </CustomButton>
     </form>
   );
 };
